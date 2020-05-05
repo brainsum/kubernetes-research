@@ -11,7 +11,7 @@ $databases['default']['default'] = [
   'password' => 'drupal',
   'prefix' => '',
   'host' => 'mariadb',
-  'port' => '',
+  'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 ];
