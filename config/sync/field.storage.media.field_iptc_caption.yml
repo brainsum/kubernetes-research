@@ -1,0 +1,21 @@
+uuid: 8db08a6d-a0c3-4883-8bb5-b4a16496b1b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - text
+_core:
+  default_config_hash: nQXQ7UHoFbp_Shtb7NhrxqTS5uvTAmj7cYSDXszL830
+id: media.field_iptc_caption
+field_name: field_iptc_caption
+entity_type: media
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

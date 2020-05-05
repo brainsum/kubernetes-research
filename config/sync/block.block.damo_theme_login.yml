@@ -1,0 +1,22 @@
+uuid: 181acc51-2c49-4602-897c-c1260e8eff53
+langcode: en
+status: false
+dependencies:
+  module:
+    - user
+  theme:
+    - damo_theme
+_core:
+  default_config_hash: xJXumUyh_P5uANChp9vq8SbupPrB_7_iR8Vk0s1GQbE
+id: damo_theme_login
+theme: damo_theme
+region: navigation
+weight: -5
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+visibility: {  }

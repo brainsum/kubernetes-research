@@ -1,0 +1,16 @@
+uuid: 8e26c0f2-a878-4de8-81ee-49c94999860b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.maintainer
+  module:
+    - user
+_core:
+  default_config_hash: NtNMAUY5NG-rvTalnVnfldT5GFbrs34n_Ng0pz1Z7T0
+id: user_remove_role_action.maintainer
+label: 'Remove the Maintainer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: maintainer

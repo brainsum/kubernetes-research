@@ -1,0 +1,13 @@
+uuid: 7090fa1a-3fac-4247-b5c3-6edad0a2e7c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.template
+_core:
+  default_config_hash: C4IteMGfF1tujzLwyyHES6aEE08MALb9tEKrp_gkTs4
+id: media.template
+target_entity_type_id: media
+target_bundle: template
+default_langcode: site_default
+language_alterable: false

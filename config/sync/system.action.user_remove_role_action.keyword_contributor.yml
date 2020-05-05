@@ -1,0 +1,16 @@
+uuid: 247ab058-9ab8-4ef5-8169-863b48fb0d1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.keyword_contributor
+  module:
+    - user
+_core:
+  default_config_hash: u4fqt7pE6oA_DwUuzZpBpCXV30HyQNo49p4gGVyq2-w
+id: user_remove_role_action.keyword_contributor
+label: 'Remove the Keyword contributor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: keyword_contributor

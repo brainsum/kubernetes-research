@@ -1,0 +1,21 @@
+uuid: 57cb31da-b5b6-4963-b5c4-86b835046b0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_description
+    - media.type.icon
+_core:
+  default_config_hash: gqbMC4xBXfmj8orRJdbVgXw6aZMpqa4_OdXksUvS_AY
+id: media.icon.field_description
+field_name: field_description
+entity_type: media
+bundle: icon
+label: Description
+description: 'The description of the icon.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

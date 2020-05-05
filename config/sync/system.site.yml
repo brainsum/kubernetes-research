@@ -1,0 +1,15 @@
+name: K8s
+mail: mail@currentsite.com
+slogan: DAMo
+page:
+  403: ''
+  404: ''
+  front: /assets
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+mail_notification: ''
+_core:
+  default_config_hash: cMUQyjLbN5D_c08dYZE0vSuGPZ2d-j2fKZFiLMJjp7U
+uuid: 38f757ea-46c9-483d-bfa6-7d9f3238ed1f

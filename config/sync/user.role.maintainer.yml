@@ -1,0 +1,13 @@
+uuid: 188c7523-1859-46b1-abe3-cc5bcde1e08a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XmRCIunNhQYUb4ulClG1oyDFb3Ui6PiesNl-QO-7s0U
+id: maintainer
+label: Maintainer
+weight: 8
+is_admin: null
+permissions:
+  - 'view shared media collection entities'
+  - 'view shared media collection item entities'

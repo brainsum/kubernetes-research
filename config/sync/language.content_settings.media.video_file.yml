@@ -1,0 +1,13 @@
+uuid: 024a9933-8c36-4bb1-a4e9-ebdaffc60ad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.video_file
+_core:
+  default_config_hash: beWIHNfy0nYe7RwSgsGpEeBuYFRD8yC0djmYLlTX_wA
+id: media.video_file
+target_entity_type_id: media
+target_bundle: video_file
+default_langcode: site_default
+language_alterable: false

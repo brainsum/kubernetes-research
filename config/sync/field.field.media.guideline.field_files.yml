@@ -1,0 +1,29 @@
+uuid: ece248fe-e789-4b66-a5f4-17b1c364279b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_files
+    - media.type.guideline
+  module:
+    - file
+_core:
+  default_config_hash: AezgI4kuSVN2Or3c5AjXdcY9wvayOppXQ6TULgtEEGo
+id: media.guideline.field_files
+field_name: field_files
+entity_type: media
+bundle: guideline
+label: Files
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg rgb cymk pdf'
+  max_filesize: '50 MB'
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

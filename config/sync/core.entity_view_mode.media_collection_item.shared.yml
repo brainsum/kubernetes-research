@@ -1,0 +1,12 @@
+uuid: 5bcd6f32-d278-4523-8873-7fade3195efc
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_collection
+_core:
+  default_config_hash: rkTEmPB-0JjkU_R4YxEmdT4-FtS4SI8i-nI_axctPx8
+id: media_collection_item.shared
+label: Shared
+targetEntityType: media_collection_item
+cache: true

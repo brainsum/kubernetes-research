@@ -1,0 +1,9 @@
+uuid: 8622fc13-fc78-4121-b906-9d670b742223
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: UngVBMlWcvfhsWtVyOnhiCbXGwI2AJMfDr9phMvm2xc
+name: other_hi_res_no_badge
+label: 'Original ratio (no badge)'
+effects: {  }

@@ -1,0 +1,16 @@
+uuid: 6f99b9bd-a95c-43b7-91c2-f287a5a6b44d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dam
+  module:
+    - user
+_core:
+  default_config_hash: IyXPJC1An7IAT8-dUAIIvYAGHMzKa68to80lrq7B6Uw
+id: user_remove_role_action.dam
+label: 'Remove the DAM role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: dam

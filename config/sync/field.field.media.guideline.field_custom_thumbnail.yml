@@ -1,0 +1,40 @@
+uuid: 9be7d211-ea7d-4dbf-8aca-a64953749f5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_custom_thumbnail
+    - media.type.guideline
+  module:
+    - image
+_core:
+  default_config_hash: nL6rB2H6ktlkc4HduQvv8sodZFJLOAR5H7wQZMpUBSs
+id: media.guideline.field_custom_thumbnail
+field_name: field_custom_thumbnail
+entity_type: media
+bundle: guideline
+label: 'Custom thumbnail'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: '50 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

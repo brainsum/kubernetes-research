@@ -1,0 +1,10 @@
+uuid: 7ffaa03f-b55e-4743-b61c-e4ff89404c99
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yJuISjSwzLQ1ob2VGEJB3WMzDZh2xi7x3AAxk98hM94
+name: Category
+vid: category
+description: 'Categories of media assets.'
+weight: 0

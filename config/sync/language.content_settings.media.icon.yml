@@ -1,0 +1,13 @@
+uuid: be7305cc-f63a-4d8a-b3b2-5aa4caec2058
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.icon
+_core:
+  default_config_hash: VACECigv-XtjWLwyqGabS4UemcflTN92gh8gYGe2ew8
+id: media.icon
+target_entity_type_id: media
+target_bundle: icon
+default_langcode: site_default
+language_alterable: false

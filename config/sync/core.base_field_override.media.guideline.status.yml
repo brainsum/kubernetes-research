@@ -1,0 +1,24 @@
+uuid: d2f7d83c-2336-4c59-b299-e4bca0f642ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.guideline
+_core:
+  default_config_hash: _k8yHL2HNNnkQclf63PastmtZuZ9teunxvMxbFVm5SA
+id: media.guideline.status
+field_name: status
+entity_type: media
+bundle: guideline
+label: 'Publishing status'
+description: 'A boolean indicating whether the media is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
