@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  php:
+    environment:
+      DRUPAL_DATABASE_HOST: mariadb
+      DRUPAL_DATABASE_PORT: 3306
+      DRUPAL_DATABASE_USERNAME: drupal
+      DRUPAL_DATABASE_PASSWORD: drupal
+      DRUPAL_DATABASE_NAME: drupal
+      ## For K8S
+      DRUPAL_HASH_SALT: '<some random hash drupal generates a 74 characters long one>'
