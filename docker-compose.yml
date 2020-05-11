@@ -18,7 +18,7 @@ services:
 
   php:
     # Linux| 1000:1000
-    image: brainsum/damo-php:7.3-dev-4.14.3
+    image: brainsum/k8sdemo:7.4-dev-4.15.8
     #    # Mac| 501:20
     #    image: wodby/drupal-php:7.3-dev-macos-4.14.3
     environment:
@@ -46,8 +46,8 @@ services:
     #      SIMPLETEST_DB: "mysql://drupal:drupal@mariadb/drupal#tests_"
     #      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
 
-    volumes:
-      - ./:/var/www/html
+#    volumes:
+#      - ./:/var/www/html
   ## For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
   #      - ./:/var/www/html:cached # User-guided caching
   #      - docker-sync:/var/www/html # Docker-sync
@@ -55,7 +55,7 @@ services:
   #      - files:/mnt/files
 
   nginx:
-    image: wodby/nginx:1.17-5.8.2
+    image: brainsum/k8sdemo-nginx:1.17-5.8.15
     depends_on:
       - php
     environment:
@@ -69,7 +69,8 @@ services:
       ##
     #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
     volumes:
-      - ./:/var/www/html
+      - ./upstream.conf:/etc/nginx/upstream.conf
+#      - ./:/var/www/html
     # For macOS users (https://wodby.com/docs/stacks/drupal/local#docker-for-mac)
     #      - ./:/var/www/html:cached # User-guided caching
     #      - docker-sync:/var/www/html # Docker-sync

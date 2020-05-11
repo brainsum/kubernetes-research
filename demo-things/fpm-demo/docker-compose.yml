@@ -1,0 +1,17 @@
+# Development env for the projects.
+## @see: https://github.com/wodby/docker4drupal
+
+version: "2"
+
+services:
+  php:
+    image: brainsum/k8sdemo-fpm-app:1.0.0
+
+  nginx:
+    image: brainsum/k8sdemo-fpm-nginx:1.0.0
+    depends_on:
+      - php
+    ports:
+      - 8100:80
+    volumes:
+    - ./nginx/compose-site.conf:/etc/nginx/conf.d/default.conf

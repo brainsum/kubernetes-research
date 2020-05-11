@@ -1,0 +1,46 @@
+# Create a pod containing the PHP-FPM application (my-php-app)
+# and nginx, each mounting the `shared-files` volume to their
+# respective /var/www/html directories.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
+  selector:
+    app: app
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  containers:
+    # Our PHP-FPM application
+    - image: brainsum/k8sdemo-fpm-app:1.0.0
+      name: php
+      ports:
+        - containerPort: 9000
+          name: fastcgi
+
+    # Our nginx container, which uses the configuration declared above,
+    # along with the files shared with the PHP-FPM app.
+    - image: brainsum/k8sdemo-fpm-nginx:1.0.0
+      name: nginx
+      ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
