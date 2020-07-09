@@ -755,7 +755,3 @@ $settings['entity_update_backup'] = TRUE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-
-if (file_exists(__DIR__ . '/../damo.settings.php')) {
-  include_once __DIR__ . '/../damo.settings.php';
-}
