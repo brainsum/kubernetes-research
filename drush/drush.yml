@@ -7,4 +7,4 @@
 # By default it has been set up for the supplied docker environment.
 options:
   root: /var/www/html/web
-  uri: 'kubernetes-research.docker.localhost:8000'
+  uri: '${env.DRUSH_SITE_URI}'

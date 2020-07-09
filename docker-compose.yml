@@ -29,6 +29,7 @@ services:
       ## Custom
       PHP_POST_MAX_SIZE: "500M"
       PHP_UPLOAD_MAX_FILESIZE: "500M"
+      DRUSH_SITE_URI: "kubernetes-research.docker.localhost:8000"
       ##
     ## Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
     #      PHP_XDEBUG: 1
