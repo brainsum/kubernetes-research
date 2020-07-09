@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3538cd994be5cff4593b3cf59934623f",
+    "content-hash": "9ebd19794d4206eeb81c8712b5484671",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -8255,6 +8255,78 @@
             "time": "2020-05-30T21:06:01+00:00"
         },
         {
+            "name": "symfony/dotenv",
+            "version": "v5.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dotenv.git",
+                "reference": "42d2a18597f4c7cafc0e25b1ad6a1cbb4f2caf05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/42d2a18597f4c7cafc0e25b1ad6a1cbb4f2caf05",
+                "reference": "42d2a18597f4c7cafc0e25b1ad6a1cbb4f2caf05",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1"
+            },
+            "require-dev": {
+                "symfony/process": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Dotenv\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Registers environment variables from a .env file",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-28T08:20:44+00:00"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "v3.4.41",
             "source": {
@@ -10054,78 +10126,6 @@
             "time": "2019-12-10T11:53:27+00:00"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.6.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "2e977311ffb17b2f82028a9c36824647789c6365"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2e977311ffb17b2f82028a9c36824647789c6365",
-                "reference": "2e977311ffb17b2f82028a9c36824647789c6365",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.9 || ^7.0 || ^8.0",
-                "symfony/polyfill-ctype": "^1.16"
-            },
-            "require-dev": {
-                "ext-filter": "*",
-                "ext-pcre": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7.27"
-            },
-            "suggest": {
-                "ext-filter": "Required to use the boolean validator.",
-                "ext-pcre": "Required to use most of the library."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.6-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com",
-                    "homepage": "https://gjcampbell.co.uk/"
-                },
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "https://vancelucas.com/"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/GrahamCampbell",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-06-02T14:06:52+00:00"
-        },
-        {
             "name": "webflo/drupal-finder",
             "version": "1.2.0",
             "source": {
@@ -11207,41 +11207,54 @@
         },
         {
             "name": "drupal/devel_entity_updates",
-            "version": "1.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel_entity_updates.git",
-                "reference": "8.x-1.0"
+                "reference": "3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel_entity_updates-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "011b76ba426344450b96efa2f16a64cbc70734c6"
+                "url": "https://ftp.drupal.org/files/projects/devel_entity_updates-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "2fcbde815745117b11170598de0211b31dd2321e"
             },
             "require": {
-                "drupal/core": "^8.7.0",
+                "drupal/core": "^8.7.7 || ^9",
                 "drupal/devel": "*"
+            },
+            "conflict": {
+                "drupal/core": "<8.7",
+                "drush/drush": ">=9.0 <9.6"
+            },
+            "require-dev": {
+                "drupal/devel": "^2 || ^3"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1586214626",
+                    "version": "3.0.0",
+                    "datestamp": "1591220515",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
-                    "name": "amateescu",
-                    "homepage": "https://www.drupal.org/user/729614"
+                    "name": "Francesco Placella (plach)",
+                    "homepage": "https://www.drupal.org/u/plach",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "plach",
@@ -11249,9 +11262,11 @@
                 }
             ],
             "description": "Provides developers an API and drush command to perform automatic entity updates.",
-            "homepage": "https://www.drupal.org/project/devel_entity_updates",
+            "homepage": "http://drupal.org/project/devel_entity_updates",
             "support": {
-                "source": "https://git.drupalcode.org/project/devel_entity_updates"
+                "source": "https://cgit.drupalcode.org/devel_entity_updates",
+                "issues": "https://drupal.org/project/issues/devel_entity_updates",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {

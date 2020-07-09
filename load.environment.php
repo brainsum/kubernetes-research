@@ -1,20 +1,19 @@
 <?php
 
 /**
- * This file is included very early. See autoload.files in composer.json and
- * https://getcomposer.org/doc/04-schema.md#files
+ * @file
+ * This file is included very early. See autoload.files in composer.json.
+ *
+ * @see: https://getcomposer.org/doc/04-schema.md#files
  */
 
-use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
+use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Dotenv\Exception\PathException;
 
-/**
- * Load any .env file. See /.env.example.
- */
-$dotenv = new Dotenv(__DIR__);
+$dotenv = new Dotenv();
 try {
-  $dotenv->load();
+  $dotenv->load(__DIR__ . '/.env');
 }
-catch (InvalidPathException $e) {
+catch (PathException $e) {
   // Do nothing. Production environments rarely use .env files.
 }
