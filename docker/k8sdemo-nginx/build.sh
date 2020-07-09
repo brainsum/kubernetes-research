@@ -9,4 +9,6 @@ IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
 
 echo "Building tag: ${IMAGE}"
 
+# @todo: Experiment with "DOCKER_BUILDKIT=1"
+
 docker build --rm -f "${SCRIPT_DIR}/Dockerfile" -t "${IMAGE}" --build-arg BASE_IMAGE_TAG="${IMAGE_TAG}" "${SCRIPT_DIR}"

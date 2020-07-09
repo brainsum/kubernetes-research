@@ -56,3 +56,37 @@
 ### Keep in mind
 - File storage (e.g with s3fs; using NFS (e.g. EFS in AWS) or Rook to manage Ceph filesystems)
 
+
+
+##### Random
+
+Kubernetes
+
+
+AZURE kubernetes
+
+==============
+
+https://www.jeffgeerling.com/blog/2019/running-drupal-kubernetes-docker-production
+https://github.com/geerlingguy/drupal-for-kubernetes/
+https://github.com/bitnami/charts/
+https://min.io/
+https://docs.bitnami.com/aws/get-started-charts-eks-marketplace/
+https://bitnami.com/stack/drupal/helm
+https://aws.amazon.com/quickstart/architecture/drupal/
+https://www.previousnext.com.au/blog/architecting-scalable-drupal-build-system-aws-ecs
+https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/firstRun
+https://eu-central-1.console.aws.amazon.com/eks/home
+
+
+ECS
+https://aws.amazon.com/getting-started/hands-on/deploy-docker-containers/
+
+
+
+===============
+
+Additional stuff, not kubernetes
+
+https://gist.github.com/keopx/7d5fe4d7a890c792c43bb79cf56718e0
+

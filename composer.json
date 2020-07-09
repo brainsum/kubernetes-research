@@ -69,13 +69,6 @@
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
-            },
-            "file-mapping": {
-                "[web-root]/sites/default/default.settings.php": {
-                    "append": "assets/settings_include_damo.txt"
-                },
-                "[web-root]/sites/damo.settings.php":  "assets/damo.settings.php",
-                "[web-root]/sites/docker.settings.php":  "assets/docker.settings.php"
             }
         },
         "installer-paths": {

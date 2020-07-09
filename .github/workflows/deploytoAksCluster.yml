@@ -27,7 +27,7 @@ jobs:
       - name: Build and push image to ACR
         id: build-image
         run: |
-          docker build "$GITHUB_WORKSPACE/docker/damo-php" -f  "docker/damo-php/Dockerfile" -t brainsumk8sdemo.azurecr.io/democluster:${{ github.sha }}
+          docker build "$GITHUB_WORKSPACE/docker/kubernetes-research-php" -f  "docker/kubernetes-research-php/Dockerfile" -t brainsumk8sdemo.azurecr.io/democluster:${{ github.sha }}
           docker push brainsumk8sdemo.azurecr.io/democluster:${{ github.sha }}
 
       - uses: azure/k8s-set-context@v1
