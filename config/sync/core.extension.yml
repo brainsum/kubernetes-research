@@ -53,6 +53,7 @@ module:
   media_entity_imagemagick: 0
   media_entity_video: 0
   media_upload: 0
+  monolog: 0
   node: 0
   page_cache: 0
   path: 0

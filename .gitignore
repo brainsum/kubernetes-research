@@ -21,7 +21,6 @@ tmp/*
 .DS_Store
 
 # Ignore configuration files that may contain sensitive information.
-web/sites/*/settings.local.php
 web/sites/*/settings.devdesktop.php
 web/sites/*/services*.yml
 
@@ -42,3 +41,7 @@ web/sites/*.dd
 .gitattributes
 
 docker-compose.local.yml
+
+services.local.yml
+settings.local.php
+local.settings.php

@@ -57,3 +57,7 @@ web/sites/*.dd
 
 # Ignore .env files as they are personal
 .editorconfig
+
+services.local.yml
+settings.local.php
+local.settings.php
