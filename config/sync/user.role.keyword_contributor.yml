@@ -11,8 +11,8 @@ is_admin: null
 permissions:
   - 'access shortcuts'
   - 'access toolbar'
-  - 'add terms in category'
-  - 'add terms in keyword'
+  - 'create terms in category'
+  - 'create terms in keyword'
   - 'edit terms in category'
   - 'edit terms in keyword'
   - 'publish any media'

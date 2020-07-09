@@ -13,3 +13,5 @@ permissions:
   - 'view media'
   - 'view shared media collection entities'
   - 'view shared media collection item entities'
+  - 'view terms in category'
+  - 'view terms in keyword'

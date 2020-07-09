@@ -11,8 +11,8 @@ is_admin: null
 permissions:
   - 'access content'
   - 'access tml jsonapi resources'
-  - 'add terms in category'
-  - 'add terms in keyword'
+  - 'create terms in category'
+  - 'create terms in keyword'
   - 'edit terms in category'
   - 'edit terms in keyword'
   - 'restful get tml_media_library'
