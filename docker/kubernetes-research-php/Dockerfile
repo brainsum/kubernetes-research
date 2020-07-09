@@ -7,13 +7,11 @@ ENV \
 
 USER ${USER_NAME}
 
-COPY --chown=${USER_NAME} assets/* assets/
 COPY --chown=${USER_NAME} composer.json composer.lock ./
 
-RUN composer install -o --no-suggest
+RUN composer global require hirak/prestissimo && composer install -o --no-suggest
 
 COPY --chown=${USER_NAME} . .
 
 # @todo: Create a prod image.
-# @todo: drush/drush.yml needs to be added dynamically
 # @todo: web/sites/settings.local.php needs to be added dynamically

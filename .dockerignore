@@ -57,4 +57,3 @@ web/sites/*.dd
 
 # Ignore .env files as they are personal
 .editorconfig
-/drush/drush.yml
