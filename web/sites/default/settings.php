@@ -1,10 +1,5 @@
 <?php
 
-// @codingStandardsIgnoreFile
-
-// Config sync directory.
-$config_directories['sync'] = '../config/sync';
-
 // Hash salt.
 $settings['hash_salt'] = getenv('DRUPAL_HASH_SALT');
 
@@ -37,12 +32,10 @@ $settings['file_scan_ignore_directories'] = [
 $settings['entity_update_batch_size'] = 50;
 $settings['entity_update_backup'] = TRUE;
 
-$settings['config_sync_directory'] = '../config/sync';
 $settings['file_public_path'] = 'sites/default/files';
-
-if (file_exists(__DIR__ . '/../damo.settings.php')) {
-  include_once __DIR__ . '/../damo.settings.php';
-}
+$settings['file_temp_path'] = '/tmp';
+$settings['file_private_path'] = '../private_files';
+$settings['config_sync_directory'] = '../config/sync';
 
 if (file_exists(__DIR__ . '/../development.settings.php')) {
   include_once __DIR__ . '/../development.settings.php';
