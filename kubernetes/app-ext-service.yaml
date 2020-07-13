@@ -1,0 +1,9 @@
+#kind: Service
+#apiVersion: v1
+#metadata:
+#  name: viaroadsafety-app-service
+#spec:
+#  type: ExternalName
+#  externalName: viaroadsafety-app-service.viaroadsafety.svc.cluster.local
+#  ports:
+#  - port: 80

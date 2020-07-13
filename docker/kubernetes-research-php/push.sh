@@ -5,7 +5,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT")
 
 IMAGE_NAME=$(cat "${SCRIPT_DIR}/image.txt");
 IMAGE_TAG=$(cat "${SCRIPT_DIR}/version.txt");
-IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+IMAGE="${IMAGE_NAME}:${IMAGE_TAG}-3"
 
 echo "Pushing tag: ${IMAGE}"
 

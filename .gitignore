@@ -45,3 +45,6 @@ docker-compose.local.yml
 services.local.yml
 settings.local.php
 local.settings.php
+
+kubernetes/secret
+!kubernetes/secret/example.*

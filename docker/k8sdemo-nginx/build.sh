@@ -14,6 +14,6 @@ CONTEXT="${SCRIPT_DIR}"
 DOCKER_BUILDKIT=1 docker build \
     --rm \
     -f "${SCRIPT_DIR}/Dockerfile" \
-    -t "${IMAGE}" \
+    -t "${IMAGE}-3" \
     --build-arg BASE_IMAGE_TAG="${IMAGE_TAG}" \
     "${CONTEXT}"

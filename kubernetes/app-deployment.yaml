@@ -1,38 +1,21 @@
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: demok8s-app-pvc
-spec:
-  accessModes:
-    - "ReadWriteOnce"
-  resources:
-    requests:
-      storage: "8Gi"
----
-## Start app.
+# @todo: kind: Deployment
 kind: Pod
 apiVersion: v1
 metadata:
   name: demok8s-app
+  namespace: demok8s
   labels:
     app: demok8s-app
 spec:
   securityContext:
     fsGroup: 1000
+#  imagePullSecrets:
+#    - name: acr-auth
   containers:
-    # Our PHP-FPM application
-    - image: brainsum/k8sdemo:7.4-dev-4.15.8
+    - image: brainsum/k8sdemo:7.4-dev-4.15.8-3
       imagePullPolicy: "IfNotPresent"
       name: drupal
       env:
-        - name: PHP_FPM_USER
-          value: wodby
-        - name: PHP_FPM_GROUP
-          value: wodby
-        - name: PHP_POST_MAX_SIZE
-          value: "500M"
-        - name: PHP_UPLOAD_MAX_FILESIZE
-          value: "500M"
         - name: DRUPAL_DATABASE_HOST
           value: drupal-database-mariadb
         - name: DRUPAL_DATABASE_PORT
@@ -40,23 +23,28 @@ spec:
         - name: DRUPAL_DATABASE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: database-secret
+              name: drupal-database-mariadb
               key: mariadb-username
         - name: DRUPAL_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database-secret
+              name: drupal-database-mariadb
               key: mariadb-password
         - name: DRUPAL_DATABASE_NAME
           valueFrom:
             secretKeyRef:
-              name: database-secret
+              name: drupal-database-mariadb
               key: mariadb-db-name
         - name: DRUPAL_HASH_SALT
           valueFrom:
             secretKeyRef:
-              name: demok8s-drupal
+              name: app-secret
               key: drupal-hash-salt
+        - name: DRUSH_SITE_URI
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: drush-site-uri
       ports:
         - name: fastcgi
           containerPort: 9000
@@ -69,9 +57,7 @@ spec:
           mountPath: /var/www/html/web/sites/default/files
           subPath: files
 
-    # Our nginx container, which uses the configuration declared above,
-    # along with the files shared with the PHP-FPM app.
-    - image: brainsum/k8sdemo-nginx:1.17-5.8.15
+    - image: brainsum/k8sdemo-nginx:1.17-5.8.15-3
       imagePullPolicy: "IfNotPresent"
       name: nginx
       env:

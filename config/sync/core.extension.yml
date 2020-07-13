@@ -42,6 +42,7 @@ module:
   image_effects: 0
   imagemagick: 0
   inline_entity_form: 0
+  jquery_ui: 0
   jsonapi: 0
   jsonapi_extras: 0
   language: 0

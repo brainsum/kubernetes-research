@@ -1,28 +1,13 @@
----
-# Source: mariadb/templates/secrets.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: drupal-database-mariadb
-  labels:
-    app: "mariadb"
-    chart: "mariadb-7.4.1"
-    release: "drupal-database"
-    heritage: "Helm"
-type: Opaque
-data:
-  mariadb-root-password: "dTJKdjdLUzR3bkFMVGR5Sg=="
-  mariadb-password: "RXl2ajVIS1MyV3JKc0Yyag=="
----
 # Source: mariadb/templates/master-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: drupal-database-mariadb
+  namespace: demok8s
   labels:
     app: "mariadb"
     component: "master"
-    chart: "mariadb-7.4.1"
+    chart: "mariadb-7.5.1"
     release: "drupal-database"
     heritage: "Helm"
 data:
@@ -58,10 +43,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: drupal-database-mariadb
+  namespace: demok8s
   labels:
     app: "mariadb"
     component: "master"
-    chart: "mariadb-7.4.1"
+    chart: "mariadb-7.5.1"
     release: "drupal-database"
     heritage: "Helm"
 spec:
@@ -80,12 +66,14 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: drupal-database-mariadb
+  namespace: demok8s
   labels:
     app: mariadb
-    chart: mariadb-7.4.1
+    chart: mariadb-7.5.1
     release: drupal-database
     heritage: Helm
     component: master
+    
 spec:
   selector:
     matchLabels:
@@ -100,9 +88,10 @@ spec:
     metadata:
       labels:
         app: mariadb
-        chart: mariadb-7.4.1
+        chart: mariadb-7.5.1
         release: drupal-database
         component: master
+        
     spec:
       serviceAccountName: default
       securityContext:
@@ -117,7 +106,7 @@ spec:
                 labelSelector:
                   matchLabels:
                     app: mariadb
-                    release: drupal-database
+                    release: drupal-database      
       containers:
         - name: "mariadb"
           image: docker.io/bitnami/mariadb:10.3.22-debian-10-r92
@@ -129,7 +118,7 @@ spec:
                   name: drupal-database-mariadb
                   key: mariadb-root-password
             - name: MARIADB_USER
-              value: "drupal"
+              value: "demok8s"
             - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
