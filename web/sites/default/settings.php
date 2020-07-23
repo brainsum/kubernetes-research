@@ -37,10 +37,6 @@ $settings['file_temp_path'] = '/tmp';
 $settings['file_private_path'] = '../private_files';
 $settings['config_sync_directory'] = '../config/sync';
 
-if (file_exists(__DIR__ . '/../settings.development.php')) {
-  include_once __DIR__ . '/../settings.development.php';
-}
-
 if (file_exists(__DIR__ . '/../settings.local.php')) {
   include_once __DIR__ . '/../settings.local.php';
 }

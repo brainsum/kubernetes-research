@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-kubectl config use-context DemoCluster
+#alias kubectl='microk8s kubectl'
+
+#kubectl config use-context DemoCluster
+microk8s start
+kubectl config use-context microk8s
 
 kubectl apply -f namespace.yaml
 
