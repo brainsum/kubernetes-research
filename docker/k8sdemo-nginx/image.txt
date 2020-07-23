@@ -1,1 +1,0 @@
-brainsum/k8sdemo-nginx

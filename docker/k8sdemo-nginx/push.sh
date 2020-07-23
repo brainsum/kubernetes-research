@@ -3,10 +3,13 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 
-IMAGE_NAME=$(cat "${SCRIPT_DIR}/image.txt");
-IMAGE_TAG=$(cat "${SCRIPT_DIR}/version.txt");
-IMAGE="${IMAGE_NAME}:${IMAGE_TAG}-3"
+VARIABLES=$(realpath "${SCRIPT_DIR}/../variables.txt")
+# shellcheck source=../variables.txt
+source "${VARIABLES}"
 
-echo "Pushing tag: ${IMAGE}"
 
-docker push "${IMAGE}"
+TARGET="${CONTAINER_REGISTRY}${WEBSERVER_IMAGE}:${WEBSERVER_IMAGE_TAG}"
+
+echo "Pushing image: ${TARGET}"
+
+docker push "${TARGET}"

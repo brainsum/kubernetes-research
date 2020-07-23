@@ -1,6 +1,6 @@
-ARG BASE_IMAGE_TAG
+ARG BASE_IMAGE
 
-FROM brainsum/damo-php:$BASE_IMAGE_TAG
+FROM $BASE_IMAGE
 
 ENV \
     USER_NAME="wodby"

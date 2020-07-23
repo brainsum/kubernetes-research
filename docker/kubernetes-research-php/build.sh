@@ -3,17 +3,19 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 
-IMAGE_NAME=$(cat "${SCRIPT_DIR}/image.txt");
-IMAGE_TAG=$(cat "${SCRIPT_DIR}/version.txt");
-IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+VARIABLES=$(realpath "${SCRIPT_DIR}/../variables.txt")
+# shellcheck source=../variables.txt
+source "${VARIABLES}"
 
-echo "Building tag: ${IMAGE}"
-CONTEXT="${SCRIPT_DIR}/../.."
 
-# shellcheck disable=SC2034
+CONTEXT=$(realpath "${SCRIPT_DIR}/../..")
+
+echo "Building app image: ${APP_IMAGE}:${APP_IMAGE_TAG}"
+echo "Context: ${CONTEXT}"
+
 DOCKER_BUILDKIT=1 docker build \
     --rm \
     -f "${SCRIPT_DIR}/Dockerfile" \
-    -t "${IMAGE}-3" \
-    --build-arg BASE_IMAGE_TAG="${IMAGE_TAG}" \
+    -t "${CONTAINER_REGISTRY}${APP_IMAGE}:${APP_IMAGE_TAG}" \
+    --build-arg BASE_IMAGE="${CONTAINER_REGISTRY}${APP_BASE_IMAGE}:${APP_BASE_IMAGE_TAG}" \
     "${CONTEXT}"
