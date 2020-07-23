@@ -6,5 +6,5 @@
 # Edit or remove this file as needed.
 # By default it has been set up for the supplied docker environment.
 options:
-  root: /var/www/html/web
+  root: '${env.APP_ROOT}/web'
   uri: '${env.DRUSH_SITE_URI}'

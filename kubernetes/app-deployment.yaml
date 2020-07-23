@@ -12,7 +12,7 @@ spec:
 #  imagePullSecrets:
 #    - name: acr-auth
   containers:
-    - image: brainsum/k8sdemo:7.4-dev-4.15.8-3
+    - image: brainsum/k8sdemo:1.0.0
       imagePullPolicy: "IfNotPresent"
       name: drupal
       env:
@@ -57,7 +57,7 @@ spec:
           mountPath: /var/www/html/web/sites/default/files
           subPath: files
 
-    - image: brainsum/k8sdemo-nginx:1.17-5.8.15-3
+    - image: brainsum/k8sdemo-nginx:1.0.0
       imagePullPolicy: "IfNotPresent"
       name: nginx
       env:

@@ -18,7 +18,7 @@ services:
 
   php:
     # Linux| 1000:1000
-    image: brainsum/k8sdemo:7.4-dev-4.15.8
+    image: brainsum/k8sdemo:1.0.0
     #    # Mac| 501:20
     #    image: wodby/drupal-php:7.3-dev-macos-4.14.3
     environment:
@@ -56,7 +56,7 @@ services:
   #      - files:/mnt/files
 
   nginx:
-    image: brainsum/k8sdemo-nginx:1.17-5.8.15
+    image: brainsum/k8sdemo-nginx:1.0.0
     depends_on:
       - php
     environment:
