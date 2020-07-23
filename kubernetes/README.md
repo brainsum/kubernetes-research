@@ -39,3 +39,9 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
 - `wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O azure-appgateway-config.yaml`
 - edit the file
 - `helm install -n demok8s -f azure-appgateway-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+
+# Sources
+
+## TODOs
+
+- https://github.com/wunderio/charts/blob/master/drupal/templates/drupal-deployment.yaml
