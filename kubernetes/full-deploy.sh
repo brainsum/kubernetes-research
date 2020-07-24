@@ -21,6 +21,12 @@ kubectl apply -f secret/app-secret.yaml
 
 kubectl apply -f bitnamidb.yaml
 
+helm install drupal-cache-redis bitnami/redis-cluster \
+    --namespace demok8s \
+    -f secret/redis-values.yaml
+
+# name: drupal-cache-redis
+
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
 kubectl apply -f app-balancer.yaml

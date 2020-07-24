@@ -41,8 +41,7 @@ private
 
 # Ignore configuration files that may contain sensitive information.
 web/sites/*/settings.local.php
-web/sites/*/settings.devdesktop.php
-web/sites/*/services*.yml
+web/sites/*/services.local.yml
 
 # Ignore paths that contain user-generated content.
 web/sites/*/files
