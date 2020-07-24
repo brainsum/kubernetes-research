@@ -20,7 +20,7 @@ spec:
       #  imagePullSecrets:
       #    - name: acr-auth
       containers:
-        - image: brainsum/k8sdemo:1.1.0
+        - image: brainsum/k8sdemo:1.1.1
           imagePullPolicy: "IfNotPresent"
           name: drupal
 #          # @todo: In a rolling update this is going to break some containers (new db -> old code).
@@ -61,7 +61,7 @@ spec:
                   name: app-secret
                   key: drush-site-uri
             - name: REDIS_HOST
-              value: drupal-cache-redis-redis-cluster
+              value: drupal-cache-redis-master
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -79,7 +79,7 @@ spec:
               mountPath: /var/www/html/web/sites/default/files
               subPath: files
 
-        - image: brainsum/k8sdemo-nginx:1.1.0
+        - image: brainsum/k8sdemo-nginx:1.1.1
           imagePullPolicy: "IfNotPresent"
           name: nginx
           env:
