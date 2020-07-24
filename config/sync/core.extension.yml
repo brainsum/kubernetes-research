@@ -58,6 +58,7 @@ module:
   path_alias: 0
   php_ffmpeg: 0
   redirect_after_login: 0
+  redis: 0
   rest: 0
   search_api: 0
   search_api_db: 0
