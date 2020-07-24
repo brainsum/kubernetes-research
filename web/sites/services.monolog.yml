@@ -4,7 +4,7 @@
 # 'example.settings.local.php' file, which sits next to this file.
 parameters:
   monolog.channel_handlers:
-    default: ['graylog2', 'drupal.dblog', 'error_log']
+    default: ['graylog2', 'error_log']
 
 services:
   monolog.handler.graylog2:
