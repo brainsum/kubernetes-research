@@ -27,7 +27,6 @@ module:
   entity_browser: 0
   entity_browser_entity_form: 0
   entity_embed: 0
-  exception_mailer: 0
   exif: 0
   field: 0
   field_group: 0
@@ -46,13 +45,11 @@ module:
   jsonapi: 0
   jsonapi_extras: 0
   language: 0
-  maillog: 0
   maxlength: 0
   media: 0
   media_collection: 0
   media_collection_share: 0
   media_entity_imagemagick: 0
-  media_entity_video: 0
   media_upload: 0
   monolog: 0
   node: 0
@@ -60,7 +57,6 @@ module:
   path: 0
   path_alias: 0
   php_ffmpeg: 0
-  r4032login: 0
   redirect_after_login: 0
   rest: 0
   search_api: 0
@@ -75,15 +71,12 @@ module:
   term_reference_change: 0
   text: 0
   toolbar: 0
-  update: 0
   user: 0
   userprotect: 0
   video_embed_field: 0
   video_embed_media: 0
   video_embed_wysiwyg: 0
-  jquery_ui_datepicker: 10
   views: 10
-  better_formats: 100
   damo: 1000
 theme:
   bootstrap: 0

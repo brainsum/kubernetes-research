@@ -7,6 +7,8 @@ dependencies:
     - field.field.media.video_file.field_keywords
     - field.field.media.video_file.field_video_file
     - media.type.video_file
+  module:
+    - file
 _core:
   default_config_hash: TFyq7dXIbkl67J67W1P99h59JQFkxldaK7G4_YjNwe0
 id: media.video_file.default
@@ -15,13 +17,27 @@ bundle: video_file
 mode: default
 content:
   field_keywords:
-    weight: 3
+    weight: 1
     label: inline
     settings:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_video_file:
+    type: file_video
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      controls: true
+      multiple_file_display_type: tags
+      width: 640
+      height: 480
+      autoplay: false
+      loop: false
+      muted: false
+    third_party_settings: {  }
   name:
     label: hidden
     type: string
@@ -33,7 +49,6 @@ content:
 hidden:
   created: true
   field_custom_thumbnail: true
-  field_video_file: true
   langcode: true
   search_api_excerpt: true
   thumbnail: true
