@@ -32,10 +32,12 @@
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-recommended": "^8.9",
         "drupal/monolog": "^2.0",
+        "drupal/redis": "^1.4",
         "drush/drush": "^10.0",
         "graylog2/gelf-php": "^1.6",
         "monolog/monolog": "^2.0",
         "oomphinc/composer-installers-extender": "^1.1",
+        "predis/predis": "^1.1",
         "symfony/dotenv": "^5.1"
     },
     "require-dev": {
@@ -58,7 +60,11 @@
     "extra": {
         "enable-patching": true,
         "composer-exit-on-patch-failure": true,
-        "patches": {},
+        "patches": {
+            "drupal/redis": {
+                "Memory info notices": "https://www.drupal.org/files/issues/2020-07-24/memory-info-undefined-index-3161250-2.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"

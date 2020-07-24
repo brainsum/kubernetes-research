@@ -9,6 +9,7 @@ USER ${USER_NAME}
 
 COPY --chown=${USER_NAME} composer.json composer.lock ./
 
+# @todo: Add ext-phpiredis.
 RUN composer global require hirak/prestissimo && composer install -o --no-suggest
 
 COPY --chown=${USER_NAME} . .

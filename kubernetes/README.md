@@ -12,8 +12,6 @@ Note, this should be re-done with proper helm charts and stuff.
 
 We absolutely should secure secrets.
 
-- https://victorops.com/blog/securely-keeping-kubernetes-secrets-in-git
-
 
 ## Ingress setup
 
@@ -42,9 +40,9 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
 
 # TODOs
 
-- General
+- General (Drupal)
     - HA setup for Drupal
-        - move nginx to Pod instead of sidecaring it (postponed)
+        - move nginx to Pod instead of sidecaring it [if needed] (postponed)
     - https://github.com/wunderio/charts/blob/master/drupal/templates/drupal-deployment.yaml
     - https://www.skpr.io/
     - Cron
@@ -53,6 +51,8 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
         - build a cli-only container for this    
     - Mailing (e.g postfix)
     - Testing (e.g behat)       
+- General (K8s)
+   - https://victorops.com/blog/securely-keeping-kubernetes-secrets-in-git    
 - Storage
     - https://github.com/minio/minio
         - Works with the s3fs module
@@ -78,6 +78,14 @@ Metrics
 Other
     - Openshift
     - kops
+    - container registry
+Vendor-specific:
+    - Elasticache
+    - Azure AppGateway
     
 # Misc
 - https://www.youtube.com/watch?v=2R-OFmCOp34    
+- asd
+    - https://github.com/DrupalStand/drupal-dev-docker
+    - docksal
+    ....

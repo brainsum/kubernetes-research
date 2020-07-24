@@ -92,6 +92,9 @@ services:
   #    labels:
   #      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
 
+  redis:
+    image: wodby/redis:6-3.4.2
+
   traefik:
     image: traefik:v2.1.2
     command: --api.insecure=true --providers.docker

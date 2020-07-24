@@ -8,14 +8,19 @@ services:
       DRUPAL_DATABASE_USERNAME: drupal
       DRUPAL_DATABASE_PASSWORD: drupal
       DRUPAL_DATABASE_NAME: drupal
-      ## For K8S
       DRUPAL_HASH_SALT: '<some random hash drupal generates a 74 characters long one>'
+      REDIS_HOST: 'redis'
+      REDIS_PASSWORD: mypassword
     volumes:
       - ./:/var/www/html
 
   nginx:
     volumes:
       - ./:/var/www/html
+
+  redis:
+    environment:
+      REDIS_PASSWORD: mypassword
 
   ## <-- LOGGING --> ##
   # MongoDB: https://hub.docker.com/_/mongo/
