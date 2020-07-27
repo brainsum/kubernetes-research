@@ -18,6 +18,7 @@ kubectl apply -f ingress.yaml
 
 kubectl apply -f secret/database-secret.yaml
 kubectl apply -f secret/app-secret.yaml
+kubectl apply -f secret/app-config.yaml
 
 kubectl apply -f bitnamidb.yaml
 
@@ -31,6 +32,10 @@ helm install drupal-cache-redis bitnami/redis \
 # helm repo add loki https://grafana.github.io/loki/charts
 #helm upgrade --install loki-stack --namespace demok8s loki/loki-stack
 helm install loki-stack --namespace demok8s loki/loki-stack
+
+# @todo: WARNING: Persistence is disabled!!!
+# @todo: http://loki-stack:3100 data source and log dashboard should be added via config automatically.
+helm install loki-grafana --namespace demok8s stable/grafana
 
 #helm install --namespace demok8s mongodb stable/mongodb-replicaset
 ## helm repo add elastic https://helm.elastic.co

@@ -32,9 +32,15 @@ spec:
 #                  - "drush updb -y && drush cim -y && drush cim -y && drush cr && drush cron"
           env:
             - name: DRUPAL_DATABASE_HOST
-              value: drupal-database-mariadb
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: database.host
             - name: DRUPAL_DATABASE_PORT
-              value: "3306"
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: database.port
             - name: DRUPAL_DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -61,14 +67,20 @@ spec:
                   name: app-secret
                   key: drush-site-uri
             - name: REDIS_HOST
-              value: drupal-cache-redis-master
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: cache.host
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: redis-secret
                   key: redis-password
             - name: LOGGING_URI
-              value: loki-stack
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: log.uri
           ports:
             - name: fastcgi
               containerPort: 9000
