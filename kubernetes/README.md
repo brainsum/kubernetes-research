@@ -48,19 +48,9 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
     - Cron
         - https://kubernetes.io/docs/concepts/workloads/controllers/job/
         - https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/
-        - build a cli-only container for this    
-    - Mailing (e.g postfix)
-    - Testing (e.g behat)       
+        - build a cli-only container for this       
 - General (K8s)
-   - https://victorops.com/blog/securely-keeping-kubernetes-secrets-in-git    
-- Storage
-    - https://github.com/minio/minio
-        - Works with the s3fs module
-    - https://github.com/rook/rook       
-- Cache
-    - Redis
-- Search
-    - Solr        
+   - https://victorops.com/blog/securely-keeping-kubernetes-secrets-in-git          
 - HTTPS/TLS
     - https://runnable.com/blog/how-to-use-lets-encrypt-on-kubernetes
     - https://itnext.io/automated-tls-with-cert-manager-and-letsencrypt-for-kubernetes-7daaa5e0cae4
@@ -68,13 +58,6 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
     - https://knative.dev/docs/serving/using-a-tls-cert/
     - https://docs.bitnami.com/tutorials/secure-kubernetes-services-with-ingress-tls-letsencrypt
     - https://kubernetes.github.io/ingress-nginx/examples/tls-termination/
-Logging
-    - drupal/monolog + smth
-    - https://docs.fluentbit.io/manual/installation/kubernetes/
-    - graylog
-Metrics
-    - Prometheus
-    - cAdvisor
 Other
     - Openshift
     - kops

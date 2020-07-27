@@ -30,7 +30,9 @@ helm install drupal-cache-redis bitnami/redis \
 # @todo: Maybe add sidecar to app: https://hub.helm.sh/charts/fluent/fluent-bit
 #
 # helm repo add loki https://grafana.github.io/loki/charts
-#helm upgrade --install loki-stack --namespace demok8s loki/loki-stack
+# helm upgrade --install loki-stack --namespace demok8s loki/loki-stack
+# Note: promtail might not be required (it's included in the stack)
+# Note: fluentbit might be a better tool (at least from an overhead standpoint)
 helm install loki-stack --namespace demok8s loki/loki-stack
 
 # @todo: WARNING: Persistence is disabled!!!
@@ -50,6 +52,7 @@ kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
 kubectl apply -f app-balancer.yaml
 
+# @todo: Create services for the K8s dashboard and Grafana so there's no need for tunneling (on localhost only, not for prod).
 
 ##
 # kubectl exec demok8s-app -n demok8s drupal -- drush si default --existing-config -y

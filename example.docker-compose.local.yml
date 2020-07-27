@@ -23,23 +23,7 @@ services:
     environment:
       REDIS_PASSWORD: mypassword
 
-#  ## <-- LOGGING --> ##
-# @todo: Maybe try https://medium.com/the-devs-tech/logging-with-fluent-bit-influxdb-282c9bc35245
-  loki:
-    image: grafana/loki:1.5.0
-    command: -config.file=/etc/loki/local-config.yaml
-
-  promtail:
-    image: grafana/promtail:1.5.0
-    volumes:
-      - promtail_data:/var/log
-    command: -config.file=/etc/promtail/docker-config.yaml
-
-  grafana:
-    image: grafana/grafana:7.1.1
-    labels:
-      - "traefik.http.services.${PROJECT_NAME}_grafana.loadbalancer.server.port=3000"
-      - "traefik.http.routers.${PROJECT_NAME}_grafana.rule=Host(`grafana.${PROJECT_BASE_URL}`)"
-
-volumes:
-  promtail_data: {}
+  traefik:
+    ports:
+      - '8000:80'
+      - '8080:8080' # Dashboard

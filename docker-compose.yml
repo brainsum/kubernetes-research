@@ -2,11 +2,7 @@
 ## @see: https://github.com/wodby/docker4drupal
 
 version: "2"
-# @todo: Try logging with loki, graylog2 is problematic.
-# https://github.com/itspire/monolog-loki is monolog v1-only, wait for it or smth.
-# https://github.com/grafana/loki/tree/master/production/helm
-#
-# Other logging: https://github.com/kahun/awesome-sysadmin/blob/master/README.md#log-management
+
 services:
   mariadb:
     image: wodby/mariadb:10.4-3.7.1
@@ -102,11 +98,30 @@ services:
   traefik:
     image: traefik:v2.1.2
     command: --api.insecure=true --providers.docker
-    ports:
-      - '8000:80'
-    #      - '8080:8080' # Dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+#  ## <-- LOGGING --> ##
+# @todo: Maybe try https://medium.com/the-devs-tech/logging-with-fluent-bit-influxdb-282c9bc35245
+  loki:
+    image: grafana/loki:1.5.0
+    command: -config.file=/etc/loki/local-config.yaml
+
+  # @todo: Might not be needed or should be replaced with fluentbit.
+  promtail:
+    image: grafana/promtail:1.5.0
+    volumes:
+      - promtail_data:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+
+  grafana:
+    image: grafana/grafana:7.1.1
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_grafana.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${PROJECT_NAME}_grafana.rule=Host(`grafana.${PROJECT_BASE_URL}`)"
+
+volumes:
+  promtail_data: {}
 
 #volumes:
 ## Docker-sync for macOS users
