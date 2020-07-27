@@ -1,0 +1,9 @@
+name: "K8s Demo"
+description: "Demo module"
+package: "K8s"
+type: module
+
+core_version_requirement: ^8.8.0 || ^9.0
+
+dependencies:
+  - monolog:monolog

@@ -4,26 +4,15 @@
 # 'example.settings.local.php' file, which sits next to this file.
 parameters:
   monolog.channel_handlers:
-    default: ['graylog2', 'error_log']
+    default: ['loki']
 
 services:
-  monolog.handler.graylog2:
-    class: Monolog\Handler\GelfHandler
+  monolog.handler.loki:
+    class: Itspire\MonologLoki\Handler\LokiHandler
     arguments:
-      - '@gelf.publisher'
-      - 'debug' #monolog config is ignored with custom service level has to be redefined here (default : debug), you should probably use parameters eg: '%gelf_level%'
-
-  gelf.publisher:
-    class: Gelf\Publisher
-    arguments:
-      - '@gelf.ignore_error_transport'
-
-  gelf.ignore_error_transport:
-    class: Gelf\Transport\IgnoreErrorTransportWrapper
-    arguments:
-      - '@gelf.transport'
-
-  gelf.transport:
-    class: Gelf\Transport\UdpTransport # or Tcp, Amp, Http,...
-    arguments:
-      - 'graylog'
+      # @note: Drupal does not allow the ${env.ENV_VAR} syntax so we need the service provider for adding some info from env.
+      - entrypoint: 'added in \Drupal\k8sdemo\K8sdemoServiceProvider'
+        client_name: 'drupal'
+        labels:
+          app_mode: dev
+          app_location: local

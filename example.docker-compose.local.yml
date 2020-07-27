@@ -11,6 +11,7 @@ services:
       DRUPAL_HASH_SALT: '<some random hash drupal generates a 74 characters long one>'
       REDIS_HOST: 'redis'
       REDIS_PASSWORD: mypassword
+      LOGGING_URI: 'http://loki:3100'
     volumes:
       - ./:/var/www/html
 
@@ -22,53 +23,23 @@ services:
     environment:
       REDIS_PASSWORD: mypassword
 
-  ## <-- LOGGING --> ##
-  # MongoDB: https://hub.docker.com/_/mongo/
-  mongodb:
-    image: mongo:3
-    volumes:
-      - mongo_data:/data/db
-  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    environment:
-      - http.host=0.0.0.0
-      - transport.host=localhost
-      - network.host=0.0.0.0
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    mem_limit: 1g
-  # Graylog: https://hub.docker.com/r/graylog/graylog/
-  graylog:
-    image: graylog/graylog:2.5
-    volumes:
-      - graylog_journal:/usr/share/graylog/data/journal
-    environment:
-      # CHANGE ME (must be at least 16 characters)!
-      GRAYLOG_PASSWORD_SECRET: 'somepasswordpepper'
-      # Password: admin
-      GRAYLOG_ROOT_PASSWORD_SHA2: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
-      GRAYLOG_WEB_ENDPOINT_URI: 'http://127.0.0.1:8001/api'
-    links:
-      - mongodb:mongo
-      - elasticsearch
-    depends_on:
-      - mongodb
-      - elasticsearch
-    ports:
-      # Graylog web interface and REST API
-      - 8001:9000
+#  ## <-- LOGGING --> ##
+# @todo: Maybe try https://medium.com/the-devs-tech/logging-with-fluent-bit-influxdb-282c9bc35245
+  loki:
+    image: grafana/loki:1.5.0
+    command: -config.file=/etc/loki/local-config.yaml
 
-# Volumes for persisting data, see https://docs.docker.com/engine/admin/volumes/volumes/
+  promtail:
+    image: grafana/promtail:1.5.0
+    volumes:
+      - promtail_data:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+
+  grafana:
+    image: grafana/grafana:7.1.1
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_grafana.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${PROJECT_NAME}_grafana.rule=Host(`grafana.${PROJECT_BASE_URL}`)"
+
 volumes:
-  mongo_data:
-    driver: local
-  es_data:
-    driver: local
-  graylog_journal:
-    driver: local
+  promtail_data: {}

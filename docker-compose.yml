@@ -2,7 +2,11 @@
 ## @see: https://github.com/wodby/docker4drupal
 
 version: "2"
-
+# @todo: Try logging with loki, graylog2 is problematic.
+# https://github.com/itspire/monolog-loki is monolog v1-only, wait for it or smth.
+# https://github.com/grafana/loki/tree/master/production/helm
+#
+# Other logging: https://github.com/kahun/awesome-sysadmin/blob/master/README.md#log-management
 services:
   mariadb:
     image: wodby/mariadb:10.4-3.7.1
