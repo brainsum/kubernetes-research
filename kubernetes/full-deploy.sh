@@ -25,7 +25,21 @@ helm install drupal-cache-redis bitnami/redis \
     --namespace demok8s \
     -f secret/redis-values.yaml
 
-# name: drupal-cache-redis
+#
+# @todo: Maybe add sidecar to app: https://hub.helm.sh/charts/fluent/fluent-bit
+#
+# helm repo add loki https://grafana.github.io/loki/charts
+#helm upgrade --install loki-stack --namespace demok8s loki/loki-stack
+helm install loki-stack --namespace demok8s loki/loki-stack
+
+#helm install --namespace demok8s mongodb stable/mongodb-replicaset
+## helm repo add elastic https://helm.elastic.co
+#helm install --namespace demok8s elasticsearch elastic/elasticsearch
+#helm install --namespace demok8s graylog stable/graylog \
+#  --set tags.install-mongodb=false \
+#  --set tags.install-elasticsearch=false \
+#  --set graylog.mongodb.uri=mongodb://mongodb-mongodb-replicaset-0.mongodb-mongodb-replicaset.demok8s.svc.cluster.local:27017/graylog?replicaSet=rs0 \
+#  --set graylog.elasticsearch.hosts=http://elasticsearch-client.demok8s.svc.cluster.local:9200
 
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
