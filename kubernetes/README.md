@@ -1,3 +1,7 @@
+# Demo app issues
+
+- `HTTP 413 - file too large` error even on small files
+
 # Kubernetes
 
 Note, this should be re-done with proper helm charts and stuff.
