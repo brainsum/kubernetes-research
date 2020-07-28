@@ -21,6 +21,7 @@ spec:
         - name: drupal-database-dump
           image: brainsum/k8sdemo:1.2.0
           # @todo: Add command script to the container and run that?
+          # @todo: Chugging it into some object storage like minio would be better probably.
           command: ["/bin/bash"]
           args:
             - "-c"
