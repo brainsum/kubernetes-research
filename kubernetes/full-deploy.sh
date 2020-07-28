@@ -21,6 +21,7 @@ kubectl apply -f secret/app-secret.yaml
 kubectl apply -f secret/app-config.yaml
 
 kubectl apply -f bitnamidb.yaml
+kubectl apply -f database-backup-volume.yaml
 
 helm install drupal-cache-redis bitnami/redis \
     --namespace demok8s \
@@ -39,18 +40,10 @@ helm install loki-stack --namespace demok8s loki/loki-stack
 # @todo: http://loki-stack:3100 data source and log dashboard should be added via config automatically.
 helm install loki-grafana --namespace demok8s stable/grafana
 
-#helm install --namespace demok8s mongodb stable/mongodb-replicaset
-## helm repo add elastic https://helm.elastic.co
-#helm install --namespace demok8s elasticsearch elastic/elasticsearch
-#helm install --namespace demok8s graylog stable/graylog \
-#  --set tags.install-mongodb=false \
-#  --set tags.install-elasticsearch=false \
-#  --set graylog.mongodb.uri=mongodb://mongodb-mongodb-replicaset-0.mongodb-mongodb-replicaset.demok8s.svc.cluster.local:27017/graylog?replicaSet=rs0 \
-#  --set graylog.elasticsearch.hosts=http://elasticsearch-client.demok8s.svc.cluster.local:9200
-
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
 kubectl apply -f app-balancer.yaml
+kubectl apply -f drupal-cron.yaml
 
 # @todo: Create services for the K8s dashboard and Grafana so there's no need for tunneling (on localhost only, not for prod).
 

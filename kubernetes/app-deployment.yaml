@@ -92,6 +92,13 @@ spec:
             - name: drupal-data
               mountPath: /var/www/html/web/sites/default/files
               subPath: files
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
+            limits:
+              cpu: "800m"
+              memory: "512Mi"
 
         - image: brainsum/k8sdemo-nginx:1.2.0
           imagePullPolicy: "IfNotPresent"
@@ -117,6 +124,13 @@ spec:
             - name: drupal-data
               mountPath: /var/www/html/web/sites/default/files
               subPath: files
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
       # @todo: Does this handle multiple containers writing at the same time?
       volumes:
         - name: drupal-data

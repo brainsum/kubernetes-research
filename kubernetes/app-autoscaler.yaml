@@ -16,7 +16,7 @@ spec:
     kind: Deployment
     name: demok8s-app
   minReplicas: 2
-  maxReplicas: 10
+  maxReplicas: 5
   metrics:
     - type: Resource
       resource:
