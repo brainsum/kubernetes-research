@@ -1,0 +1,82 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: drupal-deploy
+  namespace: demok8s
+spec:
+  template:
+    metadata:
+      name: drupal-deploy
+      namespace: demok8s
+    spec:
+      volumes:
+        - name: drupal-data
+          persistentVolumeClaim:
+            claimName: demok8s-app-pvc
+      restartPolicy: Never
+      containers:
+        - name: drupal-deployment
+          image: brainsum/k8sdemo:1.2.0
+          # @todo: Add command script to the container and run that?
+          command: ["/bin/bash"]
+          args:
+            - "-c"
+            - "drush updb -y && drush cim -y && drush cim -y && drush cr && drush cron"
+          env:
+            - name: DRUPAL_DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: database.host
+            - name: DRUPAL_DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: database.port
+            - name: DRUPAL_DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: drupal-database-mariadb
+                  key: mariadb-username
+            - name: DRUPAL_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: drupal-database-mariadb
+                  key: mariadb-password
+            - name: DRUPAL_DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: drupal-database-mariadb
+                  key: mariadb-db-name
+            - name: DRUPAL_HASH_SALT
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: drupal-hash-salt
+            - name: DRUSH_SITE_URI
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: drush-site-uri
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: cache.host
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: redis-password
+            - name: LOGGING_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: log.uri
+          volumeMounts:
+            - name: drupal-data
+              mountPath: /var/www/html/private_files
+              subPath: private_files
+            - name: drupal-data
+              mountPath: /var/www/html/web/sites/default/files
+              subPath: files
