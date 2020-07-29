@@ -3,8 +3,9 @@
 # To activate this feature, follow the instructions at the top of the
 # 'example.settings.local.php' file, which sits next to this file.
 parameters:
+  # @todo: Figure out how to send stdout to grafana.
   monolog.channel_handlers:
-    default: ['loki']
+    default: ['loki', 'stdout']
 
 services:
   monolog.handler.loki:
@@ -16,3 +17,14 @@ services:
         labels:
           app_mode: dev
           app_location: local
+
+  monolog.formatter.json:
+    class: Monolog\Formatter\JsonFormatter
+
+  monolog.handler.stdout:
+    class: Monolog\Handler\StreamHandler
+    calls:
+      - [setFormatter, ['@monolog.formatter.json']]
+    arguments:
+      - 'php://stdout'
+      - 200 # See \Monolog\Logger::INFO

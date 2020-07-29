@@ -58,6 +58,13 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
 
 # TODOs
 
+## Logging
+Redo logging to be 12factor compliant.
+Show logs in grafana nonetheless.
+php-fpm config: https://github.com/kibatic/symfony-docker/blob/master/7.3/rootfs/etc/php/7.3/fpm/pool.d/www_kibatic.conf
+Symfony issue https://github.com/symfony/symfony/issues/31556
+
+## Others
 - General (Drupal)
     - HA setup for Drupal
         - move nginx to Pod instead of sidecaring it [if needed] (postponed)
@@ -86,8 +93,11 @@ Vendor-specific:
     
 # Misc
 - https://www.youtube.com/watch?v=2R-OFmCOp34    
+- https://www.youtube.com/watch?v=ZpbXSdzp_vo
+    - https://github.com/burrsutter/9stepsawesome
 - https://github.com/hynese/k8sConfig
 - asd
     - https://github.com/DrupalStand/drupal-dev-docker
     - docksal
     ....
+    
