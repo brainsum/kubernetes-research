@@ -1,10 +1,24 @@
 # Demo app issues
 
-- `HTTP 413 - file too large` error even on small files
+n/a right now
 
 # Kubernetes
 
 Note, this should be re-done with proper helm charts and stuff.
+
+## MicroK8s
+
+```text
+microk8s is running
+addons:
+dashboard: enabled
+dns: enabled
+ingress: enabled
+metallb: enabled <@note: This is not supported on MacOS>
+metrics-server: enabled
+storage: enabled
+```
+
 
 ## Values
 
@@ -72,6 +86,7 @@ Vendor-specific:
     
 # Misc
 - https://www.youtube.com/watch?v=2R-OFmCOp34    
+- https://github.com/hynese/k8sConfig
 - asd
     - https://github.com/DrupalStand/drupal-dev-docker
     - docksal

@@ -9,10 +9,10 @@ kubectl config use-context microk8s
 kubectl apply -f namespace.yaml
 
 helm install nginx-ingress stable/nginx-ingress \
-    --namespace demok8s \
-    --set controller.replicaCount=2 \
-    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+  --namespace demok8s \
+  --set controller.replicaCount=2 \
+  --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+  --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
 kubectl apply -f ingress.yaml
 
@@ -23,9 +23,12 @@ kubectl apply -f secret/app-config.yaml
 kubectl apply -f bitnamidb.yaml
 kubectl apply -f database-backup-volume.yaml
 
+# @todo:
+# 6.28M / unlimited, maxmemory policy: noeviction
+# It is recommended to configure the maxmemory policy to e.g. volatile-lru, see Redis documentation.
 helm install drupal-cache-redis bitnami/redis \
-    --namespace demok8s \
-    -f secret/redis-values.yaml
+  --namespace demok8s \
+  -f secret/redis-values.yaml
 
 #
 # @todo: Maybe add sidecar to app: https://hub.helm.sh/charts/fluent/fluent-bit
