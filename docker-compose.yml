@@ -4,18 +4,6 @@
 version: "2"
 
 services:
-  mariadb:
-    image: wodby/mariadb:10.4-3.7.1
-    stop_grace_period: 30s
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: drupal
-      MYSQL_USER: drupal
-      MYSQL_PASSWORD: drupal
-  #    volumes:
-  #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
-  #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
-
   php:
     # Linux| 1000:1000
     image: brainsum/k8sdemo:1.2.0
@@ -29,7 +17,7 @@ services:
       ## Custom
       PHP_POST_MAX_SIZE: "500M"
       PHP_UPLOAD_MAX_FILESIZE: "500M"
-      DRUSH_SITE_URI: "kubernetes-research.docker.localhost:8000"
+      DRUSH_SITE_URI: "${PROJECT_BASE_URL}:8000"
       ##
     ## Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
     #      PHP_XDEBUG: 1
@@ -78,28 +66,53 @@ services:
     labels:
       - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
 
-  mailhog:
-    image: mailhog/mailhog
-    labels:
-      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
-      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
-
-  #  solr:
-  #    image: wodby/solr:8-4.2.0
-  #    environment:
-  #      SOLR_DEFAULT_CONFIG_SET: "search_api_solr_8.x-3.2"
-  #      SOLR_HEAP: 1024m
-  #    labels:
-  #      - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
-
-  redis:
-    image: wodby/redis:6-3.4.2
+#  ## <-- INGRESS --> ##
 
   traefik:
     image: traefik:v2.1.2
     command: --api.insecure=true --providers.docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+#  ## <-- STORAGE --> ##
+
+  # @todo: Minio
+
+#  ## <-- DATABASE --> ##
+
+  mariadb:
+    image: wodby/mariadb:10.4-3.7.1
+    stop_grace_period: 30s
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+  #    volumes:
+  #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+  #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
+
+#  ## <-- CACHING --> ##
+  redis:
+    image: wodby/redis:6-3.4.2
+
+#  ## <-- SEARCH --> ##
+  solr:
+    image: wodby/solr:8-4.6.1
+    environment:
+      SOLR_DEFAULT_CONFIG_SET: search_api_solr_4.0
+      SOLR_HEAP: 1024m
+    labels:
+    - "traefik.http.services.${PROJECT_NAME}_solr.loadbalancer.server.port=8983"
+    - "traefik.http.routers.${PROJECT_NAME}_solr.rule=Host(`solr.${PROJECT_BASE_URL}`)"
+
+#  ## <-- MAIL --> ##
+
+  mailhog:
+    image: mailhog/mailhog
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 
 #  ## <-- LOGGING --> ##
 # @todo: Maybe try https://medium.com/the-devs-tech/logging-with-fluent-bit-influxdb-282c9bc35245
