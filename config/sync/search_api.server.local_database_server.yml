@@ -1,6 +1,6 @@
 uuid: b07842c4-e1d1-4915-9330-1d0da9a16d77
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - search_api_db
