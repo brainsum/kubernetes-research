@@ -90,10 +90,15 @@ CronJob and Job type resources use the same image as the standard Deployment. Th
     - https://knative.dev/docs/serving/using-a-tls-cert/
     - https://docs.bitnami.com/tutorials/secure-kubernetes-services-with-ingress-tls-letsencrypt
     - https://kubernetes.github.io/ingress-nginx/examples/tls-termination/
-Other
+- Other
     - Openshift
     - kops
     - container registry
-Vendor-specific:
+- Vendor-specific:
     - Elasticache
     - Azure AppGateway
+- Storage:
+    - Look up https://en.wikipedia.org/wiki/Network_File_System
+- CDN:
+    - https://www.drupal.org/project/cdn
+    
