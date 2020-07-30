@@ -14,6 +14,8 @@ helm install nginx-ingress stable/nginx-ingress \
   --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
   --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
+kubectl apply -f app-balancer.yaml
+
 kubectl apply -f ingress.yaml
 
 kubectl apply -f secret/database-secret.yaml
@@ -45,7 +47,6 @@ helm install loki-grafana --namespace demok8s stable/grafana
 
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
-kubectl apply -f app-balancer.yaml
 kubectl apply -f drupal-cron.yaml
 
 # @todo: Create services for the K8s dashboard and Grafana so there's no need for tunneling (on localhost only, not for prod).
