@@ -81,6 +81,16 @@ spec:
                 configMapKeyRef:
                   name: app-config
                   key: log.uri
+            - name: SOLR_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: solr.host
+            - name: SOLR_CORE
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: solr.core
           ports:
             - name: fastcgi
               containerPort: 9000

@@ -58,12 +58,16 @@ Source: <https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-c
 
 # TODOs
 
+## Minio
+
+https://github.com/helm/charts/tree/master/stable/minio
+
 ## Logging
 Redo logging to be 12factor compliant.
 Show logs in grafana nonetheless.
 php-fpm config: https://github.com/kibatic/symfony-docker/blob/master/7.3/rootfs/etc/php/7.3/fpm/pool.d/www_kibatic.conf
 Symfony issue https://github.com/symfony/symfony/issues/31556
-@todo: Change php/php-fpm/nginx logging so they log similarly to monolog (json with similar format mb).
+@todo: Change php/php-fpm/nginx logging, so they log similarly to monolog (json with similar format mb).
 http://www.inanzzz.com/index.php/post/6cn7/formatting-php-fpm-and-nginx-access-logs-as-standardised-json-string-in-docker-environment
 https://medium.com/@Alibaba_Cloud/technical-best-practices-for-container-log-processing-d33e64e3e8da
 https://stackoverflow.com/questions/22541333/have-nginx-access-log-and-error-log-log-to-stdout-and-stderr-of-master-process

@@ -25,13 +25,16 @@ kubectl apply -f secret/app-config.yaml
 kubectl apply -f bitnamidb.yaml
 kubectl apply -f database-backup-volume.yaml
 
+### CACHE -----------
+
 # @todo:
 # 6.28M / unlimited, maxmemory policy: noeviction
 # It is recommended to configure the maxmemory policy to e.g. volatile-lru, see Redis documentation.
 helm install drupal-cache-redis bitnami/redis \
   --namespace demok8s \
   -f secret/redis-values.yaml
-
+### ------------------
+### LOGGING ----------
 #
 # @todo: Maybe add sidecar to app: https://hub.helm.sh/charts/fluent/fluent-bit
 #
@@ -40,11 +43,16 @@ helm install drupal-cache-redis bitnami/redis \
 # Note: promtail might not be required (it's included in the stack)
 # Note: fluentbit might be a better tool (at least from an overhead standpoint)
 helm install loki-stack --namespace demok8s loki/loki-stack
-
 # @todo: WARNING: Persistence is disabled!!!
 # @todo: http://loki-stack:3100 data source and log dashboard should be added via config automatically.
 helm install loki-grafana --namespace demok8s stable/grafana
-
+### -----------------
+### SEARCH ----------
+# helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+# wodby/solr:8-4.6.1  vs  solr=8.5.2-slim
+helm install solr incubator/solr --namespace demok8s \
+  --set image.repository=wodby/solr,image.tag=8-4.6.1,volumeClaimTemplates.storageSize=5Gi
+### -----------------
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml
 kubectl apply -f drupal-cron.yaml
