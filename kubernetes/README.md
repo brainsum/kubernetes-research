@@ -71,16 +71,16 @@ https://stackoverflow.com/questions/22541333/have-nginx-access-log-and-error-log
 ## Best practices:
 https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
+## CLI
+
+CronJob and Job type resources use the same image as the standard Deployment. The prod-ish Deployment shouldn't have most (or any) of the CLI tools, e.g drush or composer, only the Job-type ones.
+
 ## Others
 - General (Drupal)
     - HA setup for Drupal
         - move nginx to Pod instead of sidecaring it [if needed] (postponed)
     - https://github.com/wunderio/charts/blob/master/drupal/templates/drupal-deployment.yaml
-    - https://www.skpr.io/
-    - Cron
-        - https://kubernetes.io/docs/concepts/workloads/controllers/job/
-        - https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/
-        - build a cli-only container for this       
+    - https://www.skpr.io/  
 - General (K8s)
    - https://victorops.com/blog/securely-keeping-kubernetes-secrets-in-git          
 - HTTPS/TLS
@@ -97,14 +97,3 @@ Other
 Vendor-specific:
     - Elasticache
     - Azure AppGateway
-    
-# Misc
-- https://www.youtube.com/watch?v=2R-OFmCOp34    
-- https://www.youtube.com/watch?v=ZpbXSdzp_vo
-    - https://github.com/burrsutter/9stepsawesome
-- https://github.com/hynese/k8sConfig
-- asd
-    - https://github.com/DrupalStand/drupal-dev-docker
-    - docksal
-    ....
-    

@@ -12,6 +12,8 @@ services:
       REDIS_HOST: 'redis'
       REDIS_PASSWORD: mypassword
       LOGGING_URI: 'http://loki:3100'
+      SOLR_HOST: 'solr'
+      SOLR_CORE: 'default'
     volumes:
       - ./:/var/www/html
 
