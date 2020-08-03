@@ -1,8 +1,3 @@
-# @todo: Fix this:
-# invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: missing request for cpu
-# @see: https://github.com/kubernetes/kubernetes/issues/79365
-# @see: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics
-# Probably only need to define metrics in the deployment.
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:

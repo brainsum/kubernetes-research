@@ -50,8 +50,16 @@ helm install loki-grafana --namespace demok8s stable/grafana
 ### SEARCH ----------
 # helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
 # wodby/solr:8-4.6.1  vs  solr=8.5.2-slim
-helm install solr incubator/solr --namespace demok8s \
-  --set image.repository=wodby/solr,image.tag=8-4.6.1,volumeClaimTemplates.storageSize=5Gi
+#helm install solr incubator/solr --namespace demok8s \
+#  --set image.repository=wodby/solr,image.tag=8-4.6.1,volumeClaimTemplates.storageSize=5Gi
+## --
+# @see: https://github.com/bloomberg/solr-operator/blob/master/docs/running-the-operator.md
+kubectl apply -f https://raw.githubusercontent.com/bloomberg/solr-operator/master/example/dependencies/zk_operator.yaml
+# helm repo add solr-operator https://bloomberg.github.io/solr-operator/charts
+helm install solr-operator solr-operator/solr-operator \
+    --namespace demok8s \
+    --set watchNamespaces=true
+
 ### -----------------
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml

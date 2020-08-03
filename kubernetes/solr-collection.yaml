@@ -1,0 +1,13 @@
+apiVersion: solr.bloomberg.com/v1beta1
+kind: SolrCollection
+metadata:
+  name: demok8s-solr-collection
+spec:
+  solrCloud: solr
+  collection: demok8s-solr-collection
+  autoAddReplicas: true
+  routerName: compositeId
+  numShards: 1
+  replicationFactor: 3
+  maxShardsPerNode: 2
+  collectionConfigName: "_default"

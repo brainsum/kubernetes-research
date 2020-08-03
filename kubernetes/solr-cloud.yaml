@@ -1,0 +1,12 @@
+# Depends on: helm install solr-operator solr-operator/solr-operator
+# @note: PHPStorm complains, but this is ok.
+apiVersion: solr.bloomberg.com/v1beta1
+kind: SolrCloud
+metadata:
+  name: solr
+  namespace: demok8s
+spec:
+  replicas: 3
+  solrImage:
+    tag: "8.3"
+  solrJavaMem: "-Xms300m -Xmx300m"
