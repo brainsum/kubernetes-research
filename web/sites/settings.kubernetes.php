@@ -23,3 +23,7 @@ $config['search_api.server.solr']['backend_config']['connector_config']['stats_c
 
 $settings['cache_prefix'] = 'k8sdemo_';
 $settings['container_yamls'][] = __DIR__ . '/services.monolog.yml';
+
+$settings['trusted_host_patterns'] = [
+  '^' . str_replace('.', '\.', getenv('DRUPAL_BASE_URL')) . '$',
+];

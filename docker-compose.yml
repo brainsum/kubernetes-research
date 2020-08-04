@@ -6,7 +6,7 @@ version: "3.8"
 services:
   php:
     # Linux| 1000:1000
-    image: brainsum/k8sdemo:1.4.0
+    image: brainsum/k8sdemo:1.4.1
     #    # Mac| 501:20
     #    image: wodby/drupal-php:7.3-dev-macos-4.14.3
     environment:
@@ -17,6 +17,7 @@ services:
       ## Custom
       PHP_POST_MAX_SIZE: "500M"
       PHP_UPLOAD_MAX_FILESIZE: "500M"
+      DRUPAL_BASE_URL: "${PROJECT_BASE_URL}"
       DRUSH_SITE_URI: "${PROJECT_BASE_URL}:8000"
       ##
     ## Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
@@ -44,7 +45,7 @@ services:
   #      - files:/mnt/files
 
   nginx:
-    image: brainsum/k8sdemo-nginx:1.4.0
+    image: brainsum/k8sdemo-nginx:1.4.1
     depends_on:
       - php
     environment:

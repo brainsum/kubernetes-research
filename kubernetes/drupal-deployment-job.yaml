@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: drupal-deployment
-          image: brainsum/k8sdemo:1.4.0
+          image: brainsum/k8sdemo:1.4.1
           # @todo: Add command script to the container and run that?
           command: ["/bin/bash"]
           args:
@@ -58,6 +58,11 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: drush-site-uri
+            - name: DRUPAL_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: drupal-base-uri
             - name: REDIS_HOST
               valueFrom:
                 configMapKeyRef:
@@ -73,6 +78,16 @@ spec:
                 configMapKeyRef:
                   name: app-config
                   key: log.uri
+            - name: SOLR_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: solr.host
+            - name: SOLR_CORE
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: solr.core
           volumeMounts:
             - name: drupal-data
               mountPath: /var/www/html/private_files
