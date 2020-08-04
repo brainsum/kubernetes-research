@@ -11,7 +11,6 @@ ENV \
 
 COPY config/ /etc/nginx/
 
-# @todo: Only copy webroot.
 COPY --from=source /var/www/html /var/www/html/
 
 ENTRYPOINT []
