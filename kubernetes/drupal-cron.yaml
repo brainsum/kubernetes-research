@@ -82,4 +82,4 @@ spec:
                 - name: drupal-data
                   mountPath: /var/www/html/web/sites/default/files
                   subPath: files
-  schedule: "0 1 * * 0"
+  schedule: "0 1 * * *"
