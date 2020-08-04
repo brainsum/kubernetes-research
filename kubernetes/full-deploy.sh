@@ -59,7 +59,10 @@ kubectl apply -f https://raw.githubusercontent.com/bloomberg/solr-operator/maste
 helm install solr-operator solr-operator/solr-operator \
     --namespace demok8s \
     --set watchNamespaces=true
-
+kubectl apply -f solr-cloud.yaml
+# @todo: Wait for solr pods.
+bash upload-solr-core.sh
+kubectl apply -f solr-collection.yaml
 ### -----------------
 kubectl apply -f app-volume.yaml
 kubectl apply -f app-deployment.yaml

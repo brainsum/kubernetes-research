@@ -10,4 +10,4 @@ spec:
   numShards: 1
   replicationFactor: 3
   maxShardsPerNode: 2
-  collectionConfigName: "_default"
+  collectionConfigName: "drupal"

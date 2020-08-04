@@ -1,5 +1,9 @@
+# @todo: https://lucene.apache.org/solr/guide/8_4/config-sets.html#configsets-in-solrcloud-mode
+#
 # Depends on: helm install solr-operator solr-operator/solr-operator
 # @note: PHPStorm complains, but this is ok.
+#
+# @todo: Add auth.
 apiVersion: solr.bloomberg.com/v1beta1
 kind: SolrCloud
 metadata:
@@ -8,5 +12,36 @@ metadata:
 spec:
   replicas: 3
   solrImage:
-    tag: "8.3"
-  solrJavaMem: "-Xms300m -Xmx300m"
+    repository: 'solr'
+    tag: "8.5.2"
+  customSolrKubeOptions:
+    podOptions:
+      resources:
+        limits:
+          memory: "384Mi"
+        requests:
+          cpu: "30m"
+          memory: "64Mi"
+#      envVars:
+#        - name: SOLR_AUTH_TYPE
+#          value: "basic"
+#        - name: SOLR_AUTHENTICATION_OPTS
+#          value: "-Dbasicauth=solr:SolrRocks"
+  solrJavaMem: "-Xms64m -Xmx384m"
+  solrOpts: "-Dsolr.autoSoftCommit.maxTime=10000"
+  solrGCTune: "-XX:SurvivorRatio=4 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThreshold=8"
+  zookeeperRef:
+    provided:
+      chroot: "/demok8s"
+      zookeeper:
+        zookeeperPodPolicy:
+          resources:
+            limits:
+              memory: "512Mi"
+            requests:
+              cpu: "30m"
+              memory: "128Mi"
+# @todo: Liveness probe?
+## httpHeaders:
+##   name: Authorization
+##   value: Basic c29scjpTb2xyUm9ja3M=
